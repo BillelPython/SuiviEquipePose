@@ -1,1 +1,1 @@
-web: gunicorn SuiviEquipePose.wsgi
+web: gunicorn SuiviEquipePose.wsgi:application
