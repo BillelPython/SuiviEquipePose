@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Suivi Équipes de Pose{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Suivi Pose</h2>
+        <ul>
+            <li><a href="{% url 'liste_equipes' %}">👷 Équipes</a></li>
+            <li><a href="{% url 'liste_affectations' %}">📋 Affectations</a></li>
+            <li><a href="{% url 'liste_evaluations' %}">⭐ Évaluations</a></li>
+            <li><a href="{% url 'logout' %}">🚪 Déconnexion</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>{% block header %}Tableau de Bord{% endblock %}</h1>
+            <div class="user-info">
+                Bonjour, {{ user.username }}
+            </div>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>

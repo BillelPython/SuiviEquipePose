@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des équipes</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { border-collapse: collapse; width: 60%; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        th { background: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <h1>Liste des équipes</h1>
+    <table>
+        <tr>
+            <th>Franchisé</th>
+            <th>Nom</th>
+            <th>Chef d'équipe</th>
+            <th>Projet en cours</th>
+        </tr>
+        {% for e in equipes %}
+        <tr>
+            <td>{{ e.franchise }}</td>
+            <td>{{ e.nom }}</td>
+            <td>{{ e.chef_equipe }}</td>
+            <td>{{ e.projet_en_cours }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">Aucune équipe trouvée.</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

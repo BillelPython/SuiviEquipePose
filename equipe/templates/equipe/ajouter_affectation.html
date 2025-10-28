@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-4">➕ Nouvelle Affectation</h3>
+    <form method="post">
+        {% csrf_token %}
+      <!-- Franchisé -->
+        <div class="mb-3">
+            <label>Franchisé :</label>
+            <select name="franchise" class="form-select" required>
+                <option value="">-- Sélectionner un franchisé --</option>
+                {% for code, label in franchises %}
+                <option value="{{ code }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Équipe :</label>
+            <select name="equipe" class="form-select" required>
+                <option value="">-- Sélectionner une équipe --</option>
+                {% for eq in equipes %}
+                <option value="{{ eq.id }}">{{ eq.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Commande :</label>
+            <select name="commande" class="form-select" required>
+                <option value="">-- Sélectionner une commande --</option>
+                {% for cmd in commandes %}
+                <option value="{{ cmd.id }}">{{ cmd.numero_commande }} - {{ cmd.client }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Nombre de menuiseries :</label>
+            <input type="number" name="nombre_menuiseries" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">✅ Enregistrer</button>
+        <a href="{% url 'liste_affectations' %}" class="btn btn-secondary ms-2">⬅ Retour</a>
+    </form>
+</div>
+{% endblock %}

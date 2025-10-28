@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Suivi Équipe de Pose{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+        }
+        header {
+            background: #004080;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        a {
+            text-decoration: none;
+            color: #004080;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            margin-right: 4px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Suivi des Équipes de Pose</h1>
+    <nav>
+        <a href="{% url 'menu_principal' %}">🏠 Accueil</a> |
+        <a href="{% url 'liste_equipes' %}">👷 Équipes</a> |
+        <a href="{% url 'logout' %}">🚪 Déconnexion</a>
+    </nav>
+</header>
+
+<hr>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+</body>
+</html>

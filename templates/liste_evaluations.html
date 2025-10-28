@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="mb-4">📊 Liste des Évaluations</h3>
+  <a href="{% url 'ajouter_evaluation' %}" class="btn btn-primary mb-3">➕ Nouvelle Évaluation</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Équipe</th>
+        <th>Commande</th>
+        <th>Ponctualité</th>
+        <th>Qualité</th>
+        <th>Respect Client</th>
+        <th>Moyenne</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ev in evaluations %}
+      <tr>
+        <td>{{ ev.affectation.equipe.nom }}</td>
+        <td>{{ ev.affectation.commande }}</td>
+        <td>{{ ev.ponctualite }}</td>
+        <td>{{ ev.qualite_travail }}</td>
+        <td>{{ ev.respect_client }}</td>
+        <td><strong>{{ ev.moyenne }}</strong></td>
+        <td>{{ ev.date_evaluation }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="7" class="text-center">Aucune évaluation enregistrée.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f2f4f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .logout {
+            color: white;
+            text-decoration: none;
+            background-color: #0056b3;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .logout:hover {
+            background-color: #003f88;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            width: 80%;
+            max-width: 900px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 25px;
+            text-align: center;
+            transition: 0.2s ease;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tableau de bord - Suivi Équipe de Pose</h1>
+        <a class="logout" href="{% url 'logout' %}">Déconnexion</a>
+    </header>
+
+    <main>
+        <div class="menu">
+            <div class="card">
+                <h2>👷 Gestion des équipes</h2>
+                <p>Créer, modifier et consulter les équipes de pose.</p>
+                <a href="{% url 'liste_equipes' %}">Accéder</a>
+            </div>
+            <div class="card">
+                <h2>📦 Affectation des équipes</h2>
+                <p>Affecter une équipe à une commande avec le nombre de menuiseries.</p>
+                <a href="{% url 'liste_affectations' %}">Accéder</a>
+            </div>
+            <div class="card">
+                <h2>🧾 Évaluation des équipes</h2>
+                <p>Évaluer les équipes selon les critères :</p>
+                <ul style="text-align:left;">
+                    <li>Respect des heures et dates</li>
+                    <li>Comportement général</li>
+                    <li>État des menuiseries livrées</li>
+                    <li>Respect du protocole de pose</li>
+                    <li>Nettoyage et propreté</li>
+                </ul>
+                <a href="{% url 'liste_evaluations' %}">Accéder</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

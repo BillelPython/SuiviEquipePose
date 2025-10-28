@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-4">📋 Liste des Affectations</h3>
+    <a href="{% url 'ajouter_affectation' %}" class="btn btn-primary mb-3">➕ Nouvelle Affectation</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Franchisé</th>
+                <th>Équipe</th>
+                <th>Commande</th>
+                <th>Nombre de Menuiseries</th>
+                <th>Date d’Affectation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aff in affectations %}
+            <tr>
+                <td>{{ aff.equipe.franchise }}</td>
+                <td>{{ aff.equipe.nom }}</td>
+                <td>{{ aff.commande.numero_commande }}</td>
+                <td>{{ aff.nombre_menuiseries }}</td>
+                <td>{{ aff.date_affectation }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4" class="text-center">Aucune affectation trouvée.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

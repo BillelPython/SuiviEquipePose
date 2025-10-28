@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Liste des Équipes de Pose</h2>
+<a href="{% url 'ajouter_equipe' %}" class="btn btn-success">➕ Ajouter une équipe</a>
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Franchisé</th>
+        <th>Nom</th>
+        <th>Chef d'équipe</th>
+        <th>Poseurs</th>
+        <th>Téléphone</th>
+        <th>Actions</th>
+    </tr>
+    {% for equipe in equipes %}
+    <tr>
+        <td>{{ equipe.franchise }}</td>
+        <td>{{ equipe.nom }}</td>
+        <td>{{ equipe.chef_equipe }}</td>
+        <td>{{ equipe.nombre_poseurs }}</td>
+        <td>{{ equipe.telephone }}</td>
+        <td>
+            <a href="{% url 'modifier_equipe' equipe.id %}">✏️ Modifier</a> |
+            <a href="{% url 'supprimer_equipe' equipe.id %}" onclick="return confirm('Supprimer cette équipe ?')">🗑 Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

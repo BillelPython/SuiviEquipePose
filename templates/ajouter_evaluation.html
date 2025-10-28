@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="mb-4">📝 Nouvelle Évaluation</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">✅ Enregistrer</button>
+    <a href="{% url 'liste_evaluations' %}" class="btn btn-secondary ms-2">⬅ Retour</a>
+  </form>
+</div>
+{% endblock %}
